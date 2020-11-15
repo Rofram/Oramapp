@@ -1,99 +1,65 @@
-import React, { Component } from 'react'
-import Swiper from 'react-native-deck-swiper'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import React, { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
+import Swiper from 'react-native-deck-swiper';
 
-// demo purposes only
-function * range (start: any, end: any) {
-  for (let i = start; i <= end; i++) {
-    yield i
-  }
+import api from '../../services/api';
+
+import styles from './styles';
+
+const colors = {
+  red: '#ec2379',
+  blue: '#0070ff',
+  green: '#00BF64',
+  gray: '#777777',
+  black: '#000000',
+  white: '#ffffff'
 }
 
-export default class TinderCards extends Component {
-  constructor (props: any) {
-    super(props)
-    this.state = {
-      cards: [...range(1, 50)],
-      swipedAllCards: false,
-      swipeDirection: '',
-      cardIndex: 0
-    }
+const Card = ({ card }) => (
+  <View style={styles.card}>
+    <Text style={styles.text} >Algum Investimento</Text>
+  </View>
+)
+
+export default function TinderCards() {
+  const [index, setIndex] = useState(0);
+  const [data, setData] = useState({});
+
+
+
+  const onSwiped = () => {
+    setIndex(index + 1)
   }
 
-  renderCard = (card: any, index: any) => {
-    return (
-      <View style={styles.card}>
-        <Text style={styles.text}>{card} - {index}</Text>
-      </View>
-    )
-  };
-
-  onSwiped = (type: any) => {
-    console.log(`on swiped ${type}`)
-  }
-
-  onSwipedAllCards = () => {
-    this.setState({
-      swipedAllCards: true
-    })
-  };
-
-  swipeLeft = () => {
-    this.swiper.swipeLeft()
-  };
-
-  render () {
-    return (
-      <View style={styles.container}>
-        <Swiper
-          ref={swiper => {
-            this.swiper = swiper
-          }}
-          onSwiped={() => this.onSwiped('general')}
-          onSwipedLeft={() => this.onSwiped('left')}
-          onSwipedRight={() => this.onSwiped('right')}
-          onSwipedTop={() => this.onSwiped('top')}
-          onSwipedBottom={() => this.onSwiped('bottom')}
-          onTapCard={this.swipeLeft}
-          cards={this.state.cards}
-          cardIndex={this.state.cardIndex}
-          cardVerticalMargin={80}
-          renderCard={this.renderCard}
-          onSwipedAll={this.onSwipedAllCards}
-          stackSize={3}
+  return (
+      <View style={styles.swiperContainer}>
+        <Swiper 
+          cards={data}
+          cardIndex={index}
+          renderCard={card => <Card card={card} />}
+          onSwiped={onSwiped}
+          stackSize={4}
+          stackScale={10}
           stackSeparation={15}
+          disableBottomSwipe
+          animateOverlayLabelsOpacity
+          animateCardOpacity
+          backgroundColor={'transparent'}
           overlayLabels={{
-            bottom: {
-              title: 'BLEAH',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              }
-            },
             left: {
               title: 'NOPE',
               style: {
                 label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
+                  backgroundColor: colors.red,
+                  color: colors.white,
+                  fontSize: 24
                 },
                 wrapper: {
                   flexDirection: 'column',
                   alignItems: 'flex-end',
                   justifyContent: 'flex-start',
-                  marginTop: 30,
-                  marginLeft: -30
+                  marginTop: 20,
+                  marginLeft: -20
                 }
               }
             },
@@ -101,70 +67,21 @@ export default class TinderCards extends Component {
               title: 'LIKE',
               style: {
                 label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
+                  backgroundColor: colors.green,
+                  color: colors.white,
+                  fontSize: 24
                 },
                 wrapper: {
                   flexDirection: 'column',
                   alignItems: 'flex-start',
                   justifyContent: 'flex-start',
-                  marginTop: 30,
-                  marginLeft: 30
-                }
-              }
-            },
-            top: {
-              title: 'SUPER LIKE',
-              style: {
-                label: {
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                  borderWidth: 1
-                },
-                wrapper: {
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  marginTop: 20,
+                  marginLeft: 20
                 }
               }
             }
           }}
-          animateOverlayLabelsOpacity
-          animateCardOpacity
-          swipeBackCard
-        >
-          <Button onPress={() => this.swiper.swipeBack()} title='Swipe Back' />
-        </Swiper>
+        />
       </View>
-    )
-  }
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF'
-  },
-  card: {
-    flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: '#E8E8E8',
-    justifyContent: 'center',
-    backgroundColor: 'white'
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 50,
-    backgroundColor: 'transparent'
-  },
-  done: {
-    textAlign: 'center',
-    fontSize: 30,
-    color: 'white',
-    backgroundColor: 'transparent'
-  }
-})

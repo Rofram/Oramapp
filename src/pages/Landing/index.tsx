@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 
-import TinderCards from '../../components/TinderCards';
+import Logo from '../../images/LogoOrama2.png';
 
 import styles from './styles';
 // import { BorderlessButton, TextInput } from 'react-native-gesture-handler';
@@ -9,13 +10,17 @@ import styles from './styles';
 export default function Login() {
     return (
         <View style={styles.container}>
-            {/* <Text style={styles.label} >Login</Text>
-            <TextInput style={styles.input} placeholder='Digite seu CPF' />
-            <TextInput style={styles.input} placeholder='Digite sua Senha' />
-            <BorderlessButton style={styles.borderlessButtonContainer} >
-                <Text style={styles.textBorderlessButton} >esqueceu sua senha?</Text>
-            </BorderlessButton> */}
-            <TinderCards />
+            <View style={styles.logoContainer} >
+                <Image source={Logo} style={styles.logo} />
+            </View>
+            <View>
+                <RectButton style={styles.button} >
+                    <Text style={styles.textButton}>Login</Text>
+                </RectButton>
+                <RectButton style={styles.button}>
+                    <Text style={styles.textButton}>Cadastrar</Text>
+                </RectButton>
+            </View>
         </View>
     );
 }

@@ -1,14 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F5FCFF'
+      container: {
+        flex: 1
+      },
+
+      swiperContainer: {
+        flex: 0.55
       },
 
       card: {
-        flex: 1,
-        borderRadius: 4,
+        flex: 0.85,
+        borderRadius: 10,
         borderWidth: 2,
         borderColor: '#E8E8E8',
         justifyContent: 'center',
@@ -18,7 +21,7 @@ const styles = StyleSheet.create({
       text: {
         textAlign: 'center',
         fontSize: 50,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
       },
       
       done: {

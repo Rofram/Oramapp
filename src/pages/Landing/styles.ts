@@ -3,8 +3,35 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 24,
         justifyContent: 'center',
+        paddingHorizontal: 40,
+        paddingBottom: 80,
+    },
+
+    logoContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    logo: {
+        width: '90%',
+        resizeMode: 'contain',
+    },
+
+    button: {
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 56,
+        marginTop: 40,
+    },
+
+    textButton: {
+        color: '#468537',
+        fontFamily: 'Roboto_700Bold'
     },
 
     input: {
@@ -22,10 +49,6 @@ const styles = StyleSheet.create({
         fontFamily: '',
         marginBottom: 8,
         fontSize: 18,
-    },
-
-    borderlessButtonContainer: {
-        
     },
 
     textBorderlessButton: {

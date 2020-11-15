@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import styles from './styles';
 
-export default function CadastroCompleto() {
+export default function completeRegistration() {
     return (
         <View style={styles.container}>
             <View></View>
