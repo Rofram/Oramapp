@@ -3,9 +3,6 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         padding: 24,
-        backgroundColor: '#f9fafc',
-        borderBottomWidth: 1,
-        borderColor: '#dde3f0',
         paddingTop: 44,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -13,9 +10,9 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontFamily: '',
-        color: '#e6e6e6',
-        fontSize: 16,
+        fontFamily: 'RobotoSlab_700Bold',
+        color: '#000',
+        fontSize: 20,
     }
 });
 

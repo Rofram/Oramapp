@@ -9,11 +9,12 @@ import Login from './pages/Landing';
 import PreRegistration from './pages/PreRegistration';
 import Dashboard from './pages/Dashboard';
 import Header from './components/Header';
+import Investments from './pages/Investments';
 
 export default function Routes() {
     return (
         <NavigationContainer>
-            <Navigator screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#468537' } }}>
+            <Navigator screenOptions={{ headerShown: false }}>
                 <Screen 
                     name="Login" 
                     component={Login} 
@@ -21,14 +22,15 @@ export default function Routes() {
                 <Screen 
                     name="PreRegistration" 
                     component={PreRegistration} 
-                    options={{
-                        headerShown: true,
-                        header: () => <Header title='Pré-Cadastro' />
-                    }}
                 />
                 <Screen 
                     name="DashBoard" 
                     component={Dashboard} 
+                />
+
+                <Screen
+                    name="Investments"
+                    component={Investments}
                 />
             </Navigator>
         </NavigationContainer>

@@ -1,12 +1,17 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 
-import styles from './styles';
+import Background from "../../components/Background";
+import TinderCard from "../../components/TinderCards";
+
+import styles from "./styles";
 
 export default function Investments() {
-    return (
-        <View style={styles.container}>
-            <View></View>
-        </View>
-    );
+  return (
+    <Background>
+      <View style={styles.container}>
+        <TinderCard />
+      </View>
+    </Background>
+  );
 }
